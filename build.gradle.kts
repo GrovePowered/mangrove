@@ -35,7 +35,7 @@ publishing {
             name = "RubyGame"
             credentials {
                 username = "admin"
-                password = System.getProperty("SONATYPE_PASSWORD")
+                password = System.getenv("SONATYPE_PASSWORD")
             }
         }
     }
