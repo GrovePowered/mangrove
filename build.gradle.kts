@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
 }
 
-val patchesVersion = "1.20.4"
+val patchesVersion = "1.20.4-SNAPSHOT"
 
 val generateMangroveZip by tasks.registering(Zip::class) {
     group = "mangrove"
