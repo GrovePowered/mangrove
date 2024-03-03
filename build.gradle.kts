@@ -1,4 +1,5 @@
 plugins {
+    java
     `maven-publish`
 }
 
@@ -17,7 +18,7 @@ val generateMangroveZip by tasks.registering(Zip::class) {
     archiveExtension.set("zip")
 }
 
-val mangroveArtifact = artifacts.add("mangrove", generateMangroveZip)
+val archive = artifacts.archives(generateMangroveZip)
 
 publishing {
     publications {
@@ -26,13 +27,13 @@ publishing {
             artifactId = "mangrove"
             version = patchesVersion
 
-            artifact(mangroveArtifact)
+            artifact(archive)
         }
     }
 
     repositories {
         maven {
-            url = uri("https://repo.rubygame.net/repository/maven-snapshots/")
+            url = uri("https://repo.rubygame.net/repository/maven-releases/")
             credentials {
                 username = "admin"
                 password = System.getenv("SONATYPE_PASSWORD")
