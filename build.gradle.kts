@@ -31,8 +31,8 @@ publishing {
     }
 
     repositories {
-        maven("https://repo.rubygame.net/repository/maven-snapshots/") {
-            name = "RubyGame"
+        maven {
+            url = uri("https://repo.rubygame.net/repository/maven-snapshots/")
             credentials {
                 username = "admin"
                 password = System.getenv("SONATYPE_PASSWORD")
