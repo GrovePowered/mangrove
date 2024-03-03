@@ -31,12 +31,24 @@ publishing {
         }
     }
 
+    val useSnapshots = System.getenv("USE_SNAPSHOTS")?.toBoolean() ?: true
+
     repositories {
-        maven {
-            url = uri("https://repo.rubygame.net/repository/maven-releases/")
-            credentials {
-                username = "admin"
-                password = System.getenv("SONATYPE_PASSWORD")
+        if (useSnapshots) {
+            maven {
+                url = uri("https://repo.rubygame.net/repository/maven-snapshots/")
+                credentials {
+                    username = "admin"
+                    password = System.getenv("SONATYPE_PASSWORD")
+                }
+            }
+        } else {
+            maven {
+                url = uri("https://repo.rubygame.net/repository/maven-releases/")
+                credentials {
+                    username = "admin"
+                    password = System.getenv("SONATYPE_PASSWORD")
+                }
             }
         }
     }
